@@ -3,7 +3,8 @@
  - Create two global variables (e.g., globalVar, anotherGlobalVar).
  - Assign any values you like.
 ********************/
-
+globalVar = "I am a global variable";
+anotherGlobalVar = "I am another global variable";
 
 /********************
  Step 2: Create a Function to Demonstrate Function Scope
@@ -14,6 +15,13 @@
    3. Return a string that includes both the global and local variables.
 ********************/
 
+function demoFunctionScope() {
+  localVar = "I am a local variable";
+  console.log(globalVar);
+  console.log(anotherGlobalVar);
+  console.log(localVar);
+  return `${globalVar} ${anotherGlobalVar} ${localVar}`;
+}
 
 /********************
  Step 3: Call the Function and Log Its Return Value
@@ -21,6 +29,8 @@
  - Use console.log() to display the return value in the console.
 ********************/
 
+let result = demoFunctionScope();
+console.log(result);
 
 /********************
  Step 4: Demonstrate Block Scope
@@ -30,3 +40,13 @@
    2. Log the block-scoped variable within the block.
  - Try logging the same variable outside the block and observe what happens.
 ********************/
+
+if (true) {
+  let blockVar = "I am a block-scoped variable";
+  console.log(blockVar);
+}
+
+console.log(blockVar); // it says "Uncaught ReferenceError: blockVar is not defined at script.js:49:13"
+
+// In short it didn't print the blockVar value because it is not within the block scope where
+// the blockVar is declared.
